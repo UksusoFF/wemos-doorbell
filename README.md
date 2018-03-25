@@ -3,7 +3,7 @@
 
 Умеет играть мелодию через пищалку и присылать уведомления на телефон.
 
-Можно подключить домофон Метаком ТКП-12D (или любой другой который моргает диодом при звонке).
+Можно через оптрон 4N25 подключить домофон Метаком ТКП-12D (или любой другой который моргает диодом при звонке).
 
 Мелодии используются в формате [MML](https://en.wikipedia.org/wiki/Music_Macro_Language) с сайта [ArcheAge MML Library](https://archeagemmllibrary.com/).
 
@@ -13,3 +13,9 @@
 * [ESP8266 Arduino](https://geekelectronics.org/arduino/wemos-d1-r2-na-esp8266.html)
 * [Bounce2](https://github.com/thomasfredericks/Bounce2)
 * [MmlMusicPWM](https://github.com/maxint-rd/MmlMusicPWM)
+
+Статьи по теме:
+* [Как я домофон Vizit к mqtt подключал](https://geektimes.ru/post/284302/)
+* [Чем заняться в выходные: дистанционное управление домофоном](https://geektimes.ru/post/284110/)
+* [Домофонный мультиключ и всё про имитацию «таблеток»](https://geektimes.ru/post/258674/)
+* [Прокачиваем домофон протоколом MQTT для управления с телефона](https://geektimes.ru/post/292735/)
