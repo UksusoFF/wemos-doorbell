@@ -9,6 +9,9 @@
 
 Для уведомлений используется сервис [Pushetta](http://www.pushetta.com).
 
+Схема подключения:
+![image](https://user-images.githubusercontent.com/1931442/37878855-428fa142-3080-11e8-9af3-dee667024dea.png)
+
 Зависимости:
 * [ESP8266 Arduino](https://geekelectronics.org/arduino/wemos-d1-r2-na-esp8266.html)
 * [Bounce2](https://github.com/thomasfredericks/Bounce2)
