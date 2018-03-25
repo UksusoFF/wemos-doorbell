@@ -15,6 +15,7 @@
 * [MmlMusicPWM](https://github.com/maxint-rd/MmlMusicPWM)
 
 Статьи по теме:
+* Устройство и ремонт трубки домофона [Часть 1](http://sesaga.ru/ustrojstvo-i-remont-trubki-domofona.html), [Часть 2](http://sesaga.ru/ustrojstvo-i-remont-trubki-domofona-chast-2.html)
 * [Как я домофон Vizit к mqtt подключал](https://geektimes.ru/post/284302/)
 * [Чем заняться в выходные: дистанционное управление домофоном](https://geektimes.ru/post/284110/)
 * [Домофонный мультиключ и всё про имитацию «таблеток»](https://geektimes.ru/post/258674/)
