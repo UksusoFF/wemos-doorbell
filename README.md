@@ -16,6 +16,7 @@
 * [ESP8266 Arduino](https://geekelectronics.org/arduino/wemos-d1-r2-na-esp8266.html)
 * [Bounce2](https://github.com/thomasfredericks/Bounce2)
 * [MmlMusicPWM](https://github.com/maxint-rd/MmlMusicPWM)
+* [Fritzing Part: WeMos D1 R2](https://github.com/mikeipin/Fritzing-Part-WeMos-D1-R2)
 
 Статьи по теме:
 * Устройство и ремонт трубки домофона [Часть 1](http://sesaga.ru/ustrojstvo-i-remont-trubki-domofona.html), [Часть 2](http://sesaga.ru/ustrojstvo-i-remont-trubki-domofona-chast-2.html)
