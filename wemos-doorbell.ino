@@ -70,11 +70,15 @@ void loop() {
 
   if (intercom.update() && intercom.read() == LOW) {
     digitalWrite(LED_BUILTIN, LOW);
-    music.play(INTERCOM_SONG);
+    if (!music.isPlaying()) {
+      music.play(INTERCOM_SONG);
+    }
     sendToPushetta(PUSHETTA_CHANNEL, "Звонок в домофон!");
   } else if (doorbell.update() && doorbell.read() == LOW) {
     digitalWrite(LED_BUILTIN, LOW);
-    music.play(DOORBELL_SONG);
+    if (!music.isPlaying()) {
+      music.play(DOORBELL_SONG);
+    }
     sendToPushetta(PUSHETTA_CHANNEL, "Звонок в дверь!");
   } else {
     digitalWrite(LED_BUILTIN, HIGH);
