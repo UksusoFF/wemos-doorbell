@@ -1,9 +1,11 @@
 #include <Bounce2.h>
 #include <ESP8266WiFi.h>
 #include <ESP8266mDNS.h>
+#include <ESP8266HTTPClient.h>
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
 #include <MmlMusicPWM.h>
+#include <ArduinoJson.h>
 #include "config.h"
 
 //IP - Input Pin
@@ -16,8 +18,88 @@ const int buzzerOP = D6;
 WiFiClient client;
 Bounce doorbell = Bounce();
 Bounce intercom = Bounce();
-
 MmlMusicPWM music(buzzerOP);
+DynamicJsonBuffer jsonBuffer;
+
+enum NotificationType {
+  POWER,
+  DORRBELL,
+  INTERCOM
+};
+
+void pushettaSendMesage(String channel, String text) {
+  if (channel != "") {
+    JsonObject& message = jsonBuffer.createObject();
+    message["body"] = text;
+    message["message_type"] = "text/plain";
+    String json;
+    message.printTo(json);
+
+    HTTPClient pushetta;
+
+    pushetta.begin("http://api.pushetta.com/api/pushes/" + PUSHETTA_CHANNEL + "/");
+    pushetta.addHeader("Content-Type", "application/json");
+    pushetta.addHeader("Authorization", "Token " + PUSHETTA_KEY);
+    pushetta.end();
+  }
+}
+
+void slackSendMesage(String channel, String text) {
+  if (channel != "") {
+    JsonObject& message = jsonBuffer.createObject();
+    message["channel"] = channel;
+    message["text"] =  "<!everyone|everyone> " + text;
+    message["as_user"] = "true";
+    String json;
+    message.printTo(json);
+
+    HTTPClient slack;
+
+    slack.begin("https://slack.com/api/chat.postMessage", SLACK_FINGERPRINT);
+    slack.addHeader("Content-Type", "application/json");
+    slack.addHeader("Authorization", "Bearer " + SLACK_TOKEN);
+    slack.POST(json);
+    slack.end();
+  }
+}
+
+void pingSend(String url) {
+  if (url != "") {
+    HTTPClient ping;
+
+    ping.begin(url);
+    ping.GET();
+    ping.end();
+  }
+}
+
+void notification(NotificationType notification) {
+  String message;
+  switch (notification)
+  {
+    case POWER:
+      message = "Я включилось!";
+      pushettaSendMesage(PUSHETTA_CHANNEL, message);
+      slackSendMesage(SLACK_CHANNEL, message);
+      break;
+    case DORRBELL:
+      message = "Звонок в дверь!";
+      music.play(DOORBELL_SONG);
+      pushettaSendMesage(PUSHETTA_CHANNEL, message);
+      slackSendMesage(SLACK_CHANNEL, message);
+      pingSend(DOORBELL_PING);
+      break;
+    case INTERCOM:
+      message = "Звонок в домофон!";
+      music.play(INTERCOM_SONG);
+      pushettaSendMesage(PUSHETTA_CHANNEL, message);
+      slackSendMesage(SLACK_CHANNEL, message);
+      pingSend(INTERCOM_PING);
+      break;
+    default:
+      break;
+  }
+}
 
 void setup() {
   pinMode(intercomIP, INPUT_PULLUP);
@@ -61,8 +143,9 @@ void setup() {
     else if (error == OTA_END_ERROR) Serial.println("End Failed");
   });
   ArduinoOTA.begin();
-  
-  sendToPushetta(PUSHETTA_CHANNEL, "Я включилось!");
+  configTime(3 * 3600, 0, "pool.ntp.org", "time.nist.gov");
+
+  notification(POWER);
 }
 
 void loop() {
@@ -71,41 +154,14 @@ void loop() {
   if (intercom.update() && intercom.read() == LOW) {
     digitalWrite(LED_BUILTIN, LOW);
     if (!music.isPlaying()) {
-      music.play(INTERCOM_SONG);
+      notification(INTERCOM);
     }
-    sendToPushetta(PUSHETTA_CHANNEL, "Звонок в домофон!");
   } else if (doorbell.update() && doorbell.read() == LOW) {
     digitalWrite(LED_BUILTIN, LOW);
     if (!music.isPlaying()) {
-      music.play(DOORBELL_SONG);
+      notification(DORRBELL);
     }
-    sendToPushetta(PUSHETTA_CHANNEL, "Звонок в дверь!");
   } else {
     digitalWrite(LED_BUILTIN, HIGH);
-  }
-}
-
-void sendToPushetta(char channel[], String text) {
-  client.stop();
-
-  if (client.connect("api.pushetta.com", 80))
-  {
-    Serial.println("Start");
-    client.print("POST /api/pushes/");
-    client.print(channel);
-    client.println("/ HTTP/1.1");
-    client.print("Host: ");
-    client.println("api.pushetta.com");
-    client.print("Authorization: Token ");
-    client.println(PUSHETTA_KEY);
-    client.println("Content-Type: application/json");
-    client.print("Content-Length: ");
-    client.println(text.length() + 46);
-    client.println();
-    client.print("{ \"body\" : \"");
-    client.print(text);
-    client.println("\", \"message_type\" : \"text/plain\" }");
-    client.println();
-    Serial.println("End");
   }
 }

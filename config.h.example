@@ -1,8 +1,15 @@
 #define WIFI_SSID "YOUR WIFI SSID"
 #define WIFI_PASS "YOUR WIFI PASSWORD"
 
-#define PUSHETTA_KEY "YOUR PUSHETTA API KEY"
-#define PUSHETTA_CHANNEL "YOUR PUSHETTA CHANNEL"
-
 #define DOORBELL_SONG "MML@l16<f+g+bg+>d+8.d+8.c+4.<f+g+bg+l8.>c+c+<bl16a+g+8f+g+bg+b4>c+8<a+8.g+f+4f+8>c+8<b8b2f+g+bg+>d+4d+8c+4.<f+g+bg+>f+4<b8b8.a+g+8f+g+bg+b4>c+8<a+8.g+l4f+f+8>c+4<b1;"
 #define INTERCOM_SONG "t100o3v127g4g8g32g16g32g8g32g16g32d+32d+16d+32d+8g4g8g32g16g32g8g32g16g32d+32d+16d+32d+8g4g8g32g16g32g8g32g16g32>d+32d+32d+16d+8d+4c8c32c16c32g8&g32<g16g32g32g16g32g8>d+4.d+32d+16d+32<g8g32g16g32>d+32d+32d+16d+8c+4c+8c+32c+16c+32c+8c+32c+16c+32c+32c+16c+32c+8<d+4d+8d+32d+16d+32d+4>c32c16c32c8<g4d+32d+16d+32d+8g8g32g16g32g32g16g32g8,>>g4g4g4d+8.a+16g4d+8.a+16g2>d4d4d4d+8.<a+16f+4d+8.a+16g2g4<g8.g16>g4f+8.f16e16d+16e4<g+8>c+4c8.<b16a+16a16a+4d+8f+4d+8.a+16g4d+8.a+16g1&"
+
+const String PUSHETTA_KEY = "your_pushetta_api_key";
+const String PUSHETTA_CHANNEL = "your_pushetta_channel"; //Or empty ("") string.
+
+const String SLACK_TOKEN = "xoxb-xxxx-xxxx"; // Get token at https://my.slack.com/services/new/bot
+const String SLACK_FINGERPRINT = "C1 0D 53 49 D2 3E E5 2B A2 61 D5 9E 6F 99 0D 3D FD 8B B2 B3"; // Get fingerprint at https://www.grc.com/fingerprints.htm
+const String SLACK_CHANNEL = "YOUR_SLACK_CHANNEL"; //Or empty ("") string.
+
+const String DOORBELL_PING = "http://example.com"; //Or empty ("") string.
+const String INTERCOM_PING = "http://example.com"; //Or empty ("") string.

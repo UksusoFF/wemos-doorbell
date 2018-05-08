@@ -7,7 +7,7 @@
 
 Мелодии используются в формате [MML](https://en.wikipedia.org/wiki/Music_Macro_Language) с сайта [ArcheAge MML Library](https://archeagemmllibrary.com/).
 
-Для уведомлений используется сервис [Pushetta](http://www.pushetta.com).
+Для уведомлений используется сервис [Pushetta](http://www.pushetta.com) или [Slack](https://slack.com).
 
 Схема подключения:
 ![image](https://user-images.githubusercontent.com/1931442/37878855-428fa142-3080-11e8-9af3-dee667024dea.png)
@@ -16,6 +16,7 @@
 * [ESP8266 Arduino](https://geekelectronics.org/arduino/wemos-d1-r2-na-esp8266.html)
 * [Bounce2](https://github.com/thomasfredericks/Bounce2)
 * [MmlMusicPWM](https://github.com/maxint-rd/MmlMusicPWM)
+* [Arduino Json](https://arduinojson.org/doc/)
 * [Fritzing Part: WeMos D1 R2](https://github.com/mikeipin/Fritzing-Part-WeMos-D1-R2)
 
 Статьи по теме:
