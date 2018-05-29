@@ -26,3 +26,4 @@
 * [Домофонный мультиключ и всё про имитацию «таблеток»](https://geektimes.ru/post/258674/)
 * [Прокачиваем домофон протоколом MQTT для управления с телефона](https://geektimes.ru/post/292735/)
 * [Музыкальный дверной звонок в стиле Star Wars на Arduino](https://geektimes.ru/post/258740/)
+* [Управление координатным домофоном Vizit (Cyfral)](https://blog.instalator.ru/archives/971)
