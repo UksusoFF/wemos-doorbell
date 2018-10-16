@@ -63,12 +63,22 @@ void slackSendMesage(String channel, String text) {
   }
 }
 
-void pingSend(String url) {
+void pingSendGet(String url) {
   if (url != "") {
     HTTPClient ping;
 
     ping.begin(url);
     ping.GET();
+    ping.end();
+  }
+}
+
+void pingSendPost(String url) {
+  if (url != "") {
+    HTTPClient ping;
+
+    ping.begin(url);
+    ping.POST("");
     ping.end();
   }
 }
@@ -87,14 +97,16 @@ void notification(NotificationType notification) {
       music.play(DOORBELL_SONG);
       pushettaSendMesage(PUSHETTA_CHANNEL, message);
       slackSendMesage(SLACK_CHANNEL, message);
-      pingSend(DOORBELL_PING);
+      pingSendGet(DOORBELL_PING_GET);
+      pingSendPost(DOORBELL_PING_POST);
       break;
     case INTERCOM:
       message = "Звонок в домофон!";
       music.play(INTERCOM_SONG);
       pushettaSendMesage(PUSHETTA_CHANNEL, message);
       slackSendMesage(SLACK_CHANNEL, message);
-      pingSend(INTERCOM_PING);
+      pingSendGet(INTERCOM_PING_GET);
+      pingSendPost(INTERCOM_PING_POST);
       break;
     default:
       break;

@@ -11,5 +11,8 @@ const String SLACK_TOKEN = "xoxb-xxxx-xxxx"; // Get token at https://my.slack.co
 const String SLACK_FINGERPRINT = "C1 0D 53 49 D2 3E E5 2B A2 61 D5 9E 6F 99 0D 3D FD 8B B2 B3"; // Get fingerprint at https://www.grc.com/fingerprints.htm
 const String SLACK_CHANNEL = "YOUR_SLACK_CHANNEL"; //Or empty ("") string.
 
-const String DOORBELL_PING = "http://example.com"; //Or empty ("") string.
-const String INTERCOM_PING = "http://example.com"; //Or empty ("") string.
+const String DOORBELL_PING_GET = "http://example.com"; //Or empty ("") string.
+const String INTERCOM_PING_GET = "http://example.com"; //Or empty ("") string.
+
+const String DOORBELL_PING_POST = "http://example.com"; //Or empty ("") string.
+const String INTERCOM_PING_POST = "http://example.com"; //Or empty ("") string.
