@@ -16,7 +16,7 @@
 * [ESP8266 Arduino](https://geekelectronics.org/arduino/wemos-d1-r2-na-esp8266.html)
 * [Bounce2](https://github.com/thomasfredericks/Bounce2)
 * [MmlMusicPWM](https://github.com/maxint-rd/MmlMusicPWM)
-* [Arduino Json](https://arduinojson.org/doc/) 5.x
+* [Arduino Json](https://arduinojson.org/doc/) v5.x
 * [Fritzing Part: WeMos D1 R2](https://github.com/mikeipin/Fritzing-Part-WeMos-D1-R2)
 
 Статьи по теме:
