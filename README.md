@@ -13,7 +13,7 @@
 ![image](https://user-images.githubusercontent.com/1931442/37878855-428fa142-3080-11e8-9af3-dee667024dea.png)
 
 Зависимости:
-* [ESP8266 Arduino](https://geekelectronics.org/arduino/wemos-d1-r2-na-esp8266.html)
+* [ESP8266 Arduino](https://github.com/esp8266/Arduino) <sup>[ru](https://geekelectronics.org/arduino/wemos-d1-r2-na-esp8266.html)</sup>
 * [Bounce2](https://github.com/thomasfredericks/Bounce2)
 * [MmlMusicPWM](https://github.com/maxint-rd/MmlMusicPWM)
 * [Arduino Json](https://arduinojson.org/doc/) v5.x
