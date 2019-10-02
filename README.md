@@ -13,10 +13,11 @@
 ![image](https://user-images.githubusercontent.com/1931442/37878855-428fa142-3080-11e8-9af3-dee667024dea.png)
 
 Зависимости:
-* [ESP8266 Arduino](https://github.com/esp8266/Arduino) <sup>[ru](https://geekelectronics.org/arduino/wemos-d1-r2-na-esp8266.html)</sup>
-* [Bounce2](https://github.com/thomasfredericks/Bounce2)
-* [MmlMusicPWM](https://github.com/maxint-rd/MmlMusicPWM)
-* [Arduino Json](https://arduinojson.org/doc/) v5.x
+* [ESP8266 Arduino](https://github.com/esp8266/Arduino) v2.5.2 <sup>[ru](https://geekelectronics.org/arduino/wemos-d1-r2-na-esp8266.html)</sup>
+* [Bounce2](https://github.com/thomasfredericks/Bounce2) v2.52.0
+* [MmlMusic](https://github.com/maxint-rd/MmlMusic) v0.2.0
+* [MmlMusicPWM](https://github.com/maxint-rd/MmlMusicPWM) v0.2.0
+* [Arduino Json](https://arduinojson.org/doc/) v5.13.5
 * [Fritzing Part: WeMos D1 R2](https://github.com/mikeipin/Fritzing-Part-WeMos-D1-R2)
 
 Статьи по теме:
