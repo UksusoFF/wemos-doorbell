@@ -89,6 +89,7 @@ void notification(NotificationType notification) {
   {
     case POWER:
       message = "Я включилось!";
+      music.play(DOORBELL_SONG);
       pushettaSendMesage(PUSHETTA_CHANNEL, message);
       slackSendMesage(SLACK_CHANNEL, message);
       break;
@@ -155,7 +156,6 @@ void setup() {
     else if (error == OTA_END_ERROR) Serial.println("End Failed");
   });
   ArduinoOTA.begin();
-  configTime(3 * 3600, 0, "pool.ntp.org", "time.nist.gov");
 
   notification(POWER);
 }
