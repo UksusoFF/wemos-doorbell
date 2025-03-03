@@ -28,53 +28,6 @@ enum NotificationType {
   INTERCOM
 };
 
-void pushettaSendMesage(String channel, String text) {
-  if (channel != "") {
-    JsonObject& message = jsonBuffer.createObject();
-    message["body"] = text;
-    message["message_type"] = "text/plain";
-    String json;
-    message.printTo(json);
-
-    HTTPClient pushetta;
-
-    pushetta.begin("http://api.pushetta.com/api/pushes/" + PUSHETTA_CHANNEL + "/");
-    pushetta.addHeader("Content-Type", "application/json");
-    pushetta.addHeader("Authorization", "Token " + PUSHETTA_KEY);
-    pushetta.end();
-  }
-}
-
-void slackSendMesage(String channel, String text) {
-  if (channel != "") {
-    JsonObject& message = jsonBuffer.createObject();
-    message["channel"] = channel;
-    message["text"] =  "<!everyone|everyone> " + text;
-    message["as_user"] = "true";
-    String json;
-    message.printTo(json);
-
-    WiFiClientSecure slack;
-    slack.setFingerprint("C1 0D 53 49 D2 3E E5 2B A2 61 D5 9E 6F 99 0D 3D FD 8B B2 B3"); // Get fingerprint at https://www.grc.com/fingerprints.htm
-
-    if (!slack.connect("slack.com", 443)) {
-      Serial.println("Connection failed");
-      return;
-    }
-
-    slack.println("POST /api/chat.postMessage HTTP/1.1");
-    slack.println("Host: slack.com");
-    slack.println("Authorization: Bearer " + SLACK_TOKEN);
-    slack.println("Connection: close");
-    slack.println("Content-Type: application/json;");
-    slack.println("Content-Length: " + String(json.length()));
-    slack.println();
-    slack.println(json);
-
-    Serial.println(slack.readString());
-  }
-}
-
 void pingSendGet(String url) {
   if (url != "") {
     HTTPClient ping;
@@ -102,22 +55,21 @@ void notification(NotificationType notification) {
     case POWER:
       message = "Я включилось!";
       music.play(DOORBELL_SONG);
-      pushettaSendMesage(PUSHETTA_CHANNEL, message);
-      slackSendMesage(SLACK_CHANNEL, message);
+
+      pingSendGet(DOORBELL_PING_GET);
+      pingSendPost(DOORBELL_PING_POST);
       break;
     case DORRBELL:
       message = "Звонок в дверь!";
       music.play(DOORBELL_SONG);
-      pushettaSendMesage(PUSHETTA_CHANNEL, message);
-      slackSendMesage(SLACK_CHANNEL, message);
+
       pingSendGet(DOORBELL_PING_GET);
       pingSendPost(DOORBELL_PING_POST);
       break;
     case INTERCOM:
       message = "Звонок в домофон!";
       music.play(INTERCOM_SONG);
-      pushettaSendMesage(PUSHETTA_CHANNEL, message);
-      slackSendMesage(SLACK_CHANNEL, message);
+
       pingSendGet(INTERCOM_PING_GET);
       pingSendPost(INTERCOM_PING_POST);
       break;
